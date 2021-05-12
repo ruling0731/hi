@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>resume</title>
+    <link rel="stylesheet" type="text/css" href="assets/qq.css">
+</head>
+<body>
+    <div class="header">
+        <header>
+            <ul class="he">
+              <li><a class="" href="#">About Me</a></li>
+              &emsp;&emsp;&emsp;
+              <li><a href="#ig">Skill</a></li>
+              &emsp;&emsp;&emsp;
+              <li><a href="https://www.instagram.com/ruling_0731/?hl=zh-tw" target="_blank" title="小金魚是我啦欸嘿٩( ᐛ )و"><img src="image/fish.png"
+                    class="fish"/></a></li>&emsp;&emsp;&emsp;
+              <li><a href="#">Class</a></li>
+              &emsp;&emsp;&emsp;
+              <li><a href="#a">Other</a></li>
+            </ul>
+          </header>
+    </div>
+    
+    <nav class="main">
+    <div class="container">
+        <div class="infoma">
+            <div class="le"><p><p>
+                <img class="me" src="image/hi.jpg" 
+                onmouseover="this.src='image/alal.jpg';"
+                onmouseout="this.src='image/hi.jpg';">
+                <h1 class="name">&nbsp;徐如伶&nbsp;Ruling</h1>
+                <div class="alal">
+                    -
+                    <br>
+                      下輩子要當一隻貓。(⁎⁍̴̛ᴗ⁍̴̛⁎)
+                    <br>
+                      -
+                    <br>
+                      知道金魚怎麼叫嗎？
+                    <br>
+                      是嗷嗷嗷ㄛ！٩( ᐛ )و
+                    <br>
+                      -
+                    <br>
+                      蕉流一下R
+                    <img src="image/rabb.png" id="ig">
+                </div>
+                <p><br>
+                <a href="https://www.facebook.com/ruling0731" target="_blank" title="FaceBook">
+                <img src="image/fb.jpg" alt="fb"class="icon"></a>&nbsp;&nbsp;
+                <a href="https://www.instagram.com/ruling_0731/?hl=zh-tw" target="_blank" title="Instagram">
+                <img src="image/ig.png" alt="ig" class="icon"></a>&nbsp;&nbsp;
+                <a href="mailto:linda102106@gmail.com" title="Gmail"><img src="image/gmail.png" alt="gmail" class="icon"></a>
+                <p><br>
+                <div class="title">我的技能</div>	
+                <hr>
+                <div id="bars">
+                    <div class="text">
+                        <div class="bar" data-percent="70">
+                            <h3>CSS</h3>
+                            <canvas class="bar-circle" width="70" height="70"></canvas>
+                        </div>
+                        <div class="bar" data-percent="75">
+                            <h3>HTML5</h3>
+                            <canvas class="bar-circle" width="70" height="70"></canvas>
+                        </div>
+                        <div class="bar" data-percent="85">
+                            <h3>&nbsp;PowerPoint</h3>
+                            <canvas class="bar-circle" width="70" height="70"></canvas>
+                        </div>
+                        <p><p><br<><br><br><br><br></p>
+                        <div class="bar" data-percent="60">
+                            <h3>PowerBI</h3>
+                            <canvas class="bar-circle" width="70" height="70"></canvas>
+                        </div>
+                        <div class="bar" data-percent="100">
+                            <h3>睡覺</h3>
+                            <canvas class="bar-circle" width="70" height="70"></canvas>
+                        </div>
+                        <div class="bar" data-percent="100">
+                            <h3>玩遊戲</h3>
+                            <canvas class="bar-circle" width="70" height="70"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    (function() {
+	
+            	        var Progress = function( element ) {
+		
+            		    this.context = element.getContext( "2d" );
+            		    this.refElement = element.parentNode;
+            	    	this.loaded = 0;
+            	    	this.start = 4.72;
+            	    	this.width = this.context.canvas.width;
+	            	    this.height = this.context.canvas.height;
+	            	    this.total = parseInt( this.refElement.dataset.percent, 10 );
+	                	this.timer = null;
+            	    	this.diff = 0;
+	                	this.init();	
+                	    };
+	
+            	        Progress.prototype = {
+                            init: function() {
+            			        var self = this;
+	            		        self.timer = setInterval(function() {
+	            			        self.run();	
+	            		        }, 15);
+	            	        },
+	            	        run: function() {
+		            	        var self = this;
+			
+	            		        self.diff = ( ( self.loaded / 100 ) * Math.PI * 2 * 10 ).toFixed( 2 );	
+		            	        self.context.clearRect( 0, 0, self.width, self.height );
+	            		        self.context.lineWidth = 10;
+		                	    self.context.fillStyle = "#000";
+	            	    	    self.context.strokeStyle = "#AD5A5A";
+		                	    self.context.textAlign = "center";
+                            
+		                	    self.context.fillText( self.loaded + "%", self.width * .5, self.height * .5 + 2, self.width );
+                                self.context.beginPath();
+                                self.context.arc( 35, 35, 30, self.start, self.diff / 10 + self.start, false );
+                                self.context.stroke();
+			
+                                if( self.loaded >= self.total ) {
+                                    clearInterval( self.timer );
+                                }
+			
+                                self.loaded++;
+                            }
+                        };
+	
+                        var CircularSkillBar = function( elements ) {
+                            this.bars = document.querySelectorAll( elements );
+                            if( this.bars.length > 0 ) {
+                                this.init();
+                            }	
+                        };
+	
+                        CircularSkillBar.prototype = {
+                            init: function() {
+                            this.tick = 13;
+                            this.progress();		
+                            },
+                            progress: function() {
+                                var self = this;
+                                var index = 0;
+                                var firstCanvas = self.bars[0].querySelector( "canvas" );
+                                var firstProg = new Progress( firstCanvas );
+                                var timer = setInterval(function() {
+                                    index++;
+					
+                                    var canvas = self.bars[index].querySelector( "canvas" );
+                                    var prog = new Progress( canvas );
+				
+                                    if( index == self.bars.length ) {
+                                    clearInterval( timer );
+                                    } 
+                                }, self.tick * 100);
+                            }
+                        };
+	
+                        document.addEventListener( "DOMContentLoaded", function() {
+                            var circularBars = new CircularSkillBar( "#bars .bar" );
+                        });
+                    })();
+                </script>
+
+                <div class="title">程式能力</div>
+                <hr><p><br>
+                <div class="skill-bars">
+                    <div class="bara">
+                        <div class="info">
+                            <span>HTML</span>
+                        </div>
+                        <div class="progress-line html">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="bara">
+                        <div class="info">
+                            <span>CSS</span>
+                        </div>
+                        <div class="progress-line css">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="bara">
+                        <div class="info">
+                            <span>JAVA</span>
+                        </div>
+                        <div class="progress-line jquery">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="bara">
+                        <div class="info">
+                            <span>C#</span>
+                        </div>
+                        <div class="progress-line python">
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="bara">
+                        <div class="info">
+                            <span>MySQL</span>
+                        </div>
+                        <div class="progress-line mysql">
+                            <span></span>
+                        </div>
+                    </div>
+                </div><p><br><br>
+                <img class="q" src="image/q1.jpg" 
+                onmouseover="this.src='image/q2.jpg';"
+                onmouseout="this.src='image/q1.jpg';">
+
+                <div class="chan">
+            <div class="aboutme">
+                <div class="title" >課程經歷</div>
+                <hr><p><br>
+                <div class="timeline">
+                    <div class="container1 left">
+                        <div class="content">
+                            <h2>大一上</h2><br>
+                            <p class="tb">管理學</p><br>
+                            <p>伊甸基金會</p>
+                            <p>୧༼✿ ◕ д ◕͡ ༽୨<p>
+                        </div>
+                    </div>
+                    <div class="img11">
+                        <img src="image/img1.jpg" class="img1">
+                        <a href="#">
+                            <div class="mask1">
+                                <h5>前往位於苗栗的伊甸基金會參加活動、進行服務學習，帶領小孩們製作薑餅屋、闖關！那天真的很快樂，小孩都好可愛，希望以後還能有機會參加類似的活動！</h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="container1 right">
+                        <div class="content">
+                            <h2>大一下</h2><br>
+                            <p class="tb">企業概論</p><br>
+                            <p>Lady Bean<p>
+                            <p>٩(๑ᵒ̴̶̷᷄ᗨᵒ̴̶̷᷅)و<p>
+                        </div>
+                    </div>
+                    <div class="img22">
+                        <img src="image/img2.jpg" class="img2">
+                        <a href="#">
+                            <div class="mask2">
+                                <h5>這真的是一門非常特別的課程，要抽一個公益團體的產品去販售，但我們需要自己去找他們聯絡，洽談所有細節。這堂課真的很有趣，也讓我學到了很多！</h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="container1 left">
+                        <div class="content">
+                            <h2>大二上</h2><br>
+                            <p class="tb">網路程式設計</p><br>
+                            <p>後端程式設計<p>
+                            <p>(⸝⸝o̴̶̷᷄ ·̭ o̴̶̷̥⸝⸝)<p>
+                        </div>
+                    </div>
+                    <div class="img33" id="a">
+                        <img src="image/img3.jpg" class="img3">
+                        <a href="#">
+                            <div class="mask3">
+                                <h5>這次製作購物網站能把所學到的東西學以致用，雖然過程中真的很困難，一開始也不知道從何下手，但去嘗試過之後才會發現自己哪裡不會，後來也開始慢慢摸索出一點東西。</h5>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="container1 right">
+                        <div class="content">
+                            <h2>大二下</h2><br>
+                            <p class="tb">多媒體程式設計</p><br>
+                            <p>期中專案</p>
+                            <a href="https://jia0429.github.io/index.html" target="_blank">(⌯˃̶᷄ ⁻̫ ˂̶᷄⌯)&nbsp;點我看網頁</a>
+                        </div>
+                    </div>
+                    <div class="img44">
+                        <img src="image/img4.jpg" class="img4">
+                        <a href="#">
+                            <div class="mask4">
+                                <h5>這學期學的多媒體程式設計真的很好玩，也比上學期的後端還要更有趣，可以依照自己的喜好設計出各種不同的版面讓網頁漂漂亮亮的，真的很有成就感。</h5>
+                            </div>
+                        </a>
+                    </div>
+                  </div><br>
+
+            <div class="title">其他經歷</div>
+            <hr><br><p class="kar">&nbsp;&nbsp;卡拉OK社－活動長兼任資訊長</p><br>
+
+            <button class="accordion qq">社團博覽會</button>
+            <div class="panel">
+                <img src="image/ka1.jpg" class="kap"><p class="qaq"><br>此為期初的重要活動，透過此活動吸引其他同學，大多數社員皆會在此時入社。</p>
+            </div><br>
+            
+            <button class="accordion qq">迎新</button>
+            <div class="panel">
+                <img src="image/ka2.jpg" class="kap"><p class="qaq"><br>透過分小隊的闖關遊戲，讓大家能夠更快互相熟悉，同時也能夠更加認識幹部們。</p>
+            </div><br>
+            
+            <button class="accordion qq">社員大會</button>
+            <div class="panel">
+                <img src="image/ka3.jpg" class="kap"><p class="qaq"><br>當有重大事項，如社團改名，可透過社員大會的時機進行宣布及討論；此外，會在社員大會時公布分家名單，利用分組競賽方式幫助各家熟悉、培養感情。</p>
+            </div><br>
+
+            <button class="accordion qq">成果發表</button>
+            <div class="panel">
+                <img src="image/ka4.jpg" class="kap"><p class="qaq"><br>成發一學期共有兩次，分別在期初及期末。主要是讓其他同學能夠看見我們社團的成果，以及讓社員們能夠有上台表演的機會！</p>
+            </div><br>
+
+            <p class="kar">&nbsp;&nbsp;資管系學會－活動股、公關股、攝影股股員</p><br>
+
+            <button class="accordion qq">109畢業典禮</button>
+            <div class="panel">
+                <img src="image/im2.jpg" class="kap"><p class="qaq"><br>在畢業典禮當天負責幫忙場地布置、舉牌，協助畢業典禮進行。</p>
+            </div><br>
+
+            <button class="accordion qq">迎新宿營－活動組</button>
+            <div class="panel">
+                <img src="image/im1.jpg" class="kap"><p class="qaq"><br>迎新宿營主要是辦給大一新生所參加的活動，新生們可透過此機會認識學長姐以及系上或是其他系的同學。</p>
+            </div><br>
+
+            <button class="accordion qq">系友回娘家</button>
+            <div class="panel">
+                <img src="image/im3.jpg" class="kap"><p class="qaq"><br>擔任系友回娘家活動總召，協助此次活動進行。</p>
+            </div><br>
+
+            <button class="accordion qq">資管之夜－金資玉夜</button>
+            <div class="panel">
+                <img src="image/im4.jpg" class="kap"><p class="qaq"><br>資管之夜是資管系一年一度的活動，由活動股負責演一齣戲作為開場示範；負責主持、按鈴計時，協助活動進行。</p>
+            </div><br>
+
+            <button class="accordion qq">專題複賽</button>
+            <div class="panel">
+                <img src="image/im5.jpg" class="kap"><p class="qaq"><br>擔任機動，協助場地布置、場地復原，以及各種突發狀況。</p>
+            </div><br>
+            
+            <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+            
+            for (i = 0; i < acc.length; i++) {
+              acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                  panel.style.maxHeight = null;
+                } else {
+                  panel.style.maxHeight = panel.scrollHeight + "px";
+                } 
+              });
+            }
+            </script>
+            </div>
+        </div>
+    </div>
+    </nav>
+    <a href="#"><img class="ss" src="image/ss.png" 
+        onmouseover="this.src='image/aa.png';"
+        onmouseout="this.src='image/ss.png';"></a>
+    <footer>
+        Copyright©2021 ruling_0731<br>
+        要繼續當一隻可愛貓貓ㄛ！<br>
+        小金魚୧༼✿ ◕ д ◕͡ ༽୨
+    </footer>
+</body>
+</html>
