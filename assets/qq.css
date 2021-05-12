@@ -663,4 +663,6 @@ footer {
     font-size: 15px;
     color: #ffffff;
     padding-top: 15px;
+    text-align: center;
+    column-span: all;
 }
